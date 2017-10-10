@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="page-header">
+  <a href="{% url 'col_sel:home'%}" style="color:inherit;">
+    <h3>College Selection</h3>      
+  </a>
+</div>
+
+  {% for college in col_listing %}
+  <div class="col_listing">
+    <ul>
+      <li>
+        <a class="btn btn-default" href="{% url 'col_sel:col_submit' col_id=college.id %}">
+          <h1>{{ college.name }}</h1>
+        </a>
+          <div>
+            <p>Avg Package: {{college.avg_salary}}</p> <p>Fees: {{college.fees}}</p>
+          </div>
+      </li>
+    </ul>
+      
+    </div>
+  {% endfor %}
+
+{% endblock %}
